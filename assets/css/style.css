@@ -1,3 +1,9 @@
+:root {
+    --color-primary: #ffffff;
+    --color-secondary: #000000;
+    --color-secondary-hover: #212121;
+}
+
 body {
     margin: 0px;
     overflow-x: hidden;
@@ -10,6 +16,10 @@ h4 {
     font-family: sans-serif;
 }
 
+button {
+    cursor: pointer;
+}
+
 .container {
     padding: 0px 50px;
 }
@@ -18,6 +28,106 @@ a {
     text-decoration: none;
     color: #000;
 }
+
+/* Inicio loader */
+.loader_container {
+    display: none;
+    position: fixed;
+    top: 0;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    z-index: 9999;
+}
+
+.loader_container::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #212531;
+    opacity: .8;
+}
+
+.loader {
+    transform: rotateZ(45deg);
+    perspective: 1000px;
+    border-radius: 50%;
+    width: 68px;
+    height: 68px;
+    color: #009580;
+}
+
+.loader:before,
+.loader:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: inherit;
+    height: inherit;
+    border-radius: 50%;
+    transform: rotateX(70deg);
+    animation: 1s spin linear infinite;
+}
+.loader:after {
+    color: #009580;
+    transform: rotateY(70deg);
+    animation-delay: .4s;
+}
+
+@keyframes rotate {
+    0% {
+        transform: translate(-50%, -50%) rotateZ(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotateZ(360deg);
+    }
+    }
+
+    @keyframes rotateccw {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+    100% {
+        transform: translate(-50%, -50%) rotate(-360deg);
+    }
+}
+
+@keyframes spin {
+    0%,
+    100% {
+        box-shadow: .5em 0px 0 0px currentcolor;
+    }
+    12% {
+        box-shadow: .5em .5em 0 0 currentcolor;
+    }
+    25% {
+        box-shadow: 0 .5em 0 0px currentcolor;
+    }
+    37% {
+        box-shadow: -.5em .5em 0 0 currentcolor;
+    }
+    50% {
+        box-shadow: -.5em 0 0 0 currentcolor;
+    }
+    62% {
+        box-shadow: -.5em -.5em 0 0 currentcolor;
+    }
+    75% {
+        box-shadow: 0px -.5em 0 0 currentcolor;
+    }
+    87% {
+        box-shadow: .5em -.5em 0 0 currentcolor;
+    }
+}
+
+/* Fin loader */
 
 /* Inicio menu */
 .header {
@@ -320,4 +430,65 @@ video {
     flex-basis: 50%;
     box-sizing: border-box;
     padding-right: 6em;
+}
+
+/* ######################### */
+/* Login */
+.main_login {
+    display: grid;
+    grid-template-columns: repeat(auto-fill,minmax(500px,1fr));
+    gap: 50px;
+    margin-top: 50px;
+}
+
+.main_login__login,
+.main_login__register {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 700px;
+    text-align: center;
+}
+
+.form__input_div {
+    position: relative;
+}
+
+.main_login input {
+    display: block;
+    margin: 0 auto;
+    padding: 12px 0px;
+    border: none;
+    border-bottom: 1px solid #ccc;
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 2em;
+}
+
+.main_login label {
+    position: absolute;
+    left: calc(50% - 250px);
+}
+
+.main_login input:focus {
+    outline: none;
+}
+
+.main_login input:focus label {
+    font-size: 0.8em;
+    transform: translateY(-20px);
+    transition: all 0.3s;
+}
+
+.main_login button {
+    background-color: var(--color-secondary);
+    border: none;
+    color : var(--color-primary);
+    width: 100%;
+    max-width: 500px;
+    padding: 1.5em 0em;
+}
+
+.main_login button:hover {
+    background-color: var(--color-secondary-hover);
+    transition: all 0.3s;
 }

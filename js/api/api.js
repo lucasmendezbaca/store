@@ -2,6 +2,7 @@ const DOMAIN = 'https://fakestoreapi.com/';
 const CATEGORIES = 'products/categories';
 const PRODUCTS = 'products';
 const PRODUCTS_CATEGORY = 'products/category';
+const USERS = 'users';
 
 export function getCategories() {
     return fetch(`${DOMAIN}${CATEGORIES}`).then(res=>res.json());
@@ -21,4 +22,8 @@ export function getProductsLimit(limit) {
 
 export function getProductsCategory(category) {
     return fetch(`${DOMAIN}${PRODUCTS_CATEGORY}/${category}`).then(res=>res.json());
+}
+
+export function getUsers() {
+    return fetch(`${DOMAIN}${USERS}`).then(res=>res.json());
 }

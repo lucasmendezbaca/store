@@ -4,10 +4,12 @@ import { baner } from "../components/baner.js";
 import { siguenos } from "../components/siguenos.js";
 import { novedades } from "../components/novedades.js";
 import { getProductsLimit } from "../api/api.js";
-
+import { showLoader } from "../api/helpers.js";
+import { hideLoader } from "../api/helpers.js";
 
 export function home() {
     return new Promise((resolve, reject) => {
+        showLoader();
         getProductsLimit(7).then(res => {
             const contenedorPrincipal = document.createElement('div');
             contenedorPrincipal.classList.add('main_home');
@@ -20,6 +22,7 @@ export function home() {
             // console.log(contenedorPrincipal);
 
             resolve(contenedorPrincipal.outerHTML);
+            hideLoader();
         });
     });
 }

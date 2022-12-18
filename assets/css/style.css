@@ -18,6 +18,10 @@ h4 {
 
 button {
     cursor: pointer;
+    background-color: var(--color-secondary);
+    border: none;
+    color : var(--color-primary);
+    padding: 1.5em 1em;
 }
 
 .container {
@@ -402,6 +406,64 @@ video {
     padding: 0px 1.5rem;
 }
 
+.orden_container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 1rem;
+    position: fixed;
+    width: 14em;
+    top: 0;
+    right: 0;
+    height: 100vh;
+    padding: 0px 1em;
+    background-color: var(--color-primary);
+    z-index: 9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    transform: translateX(calc(100% + 10px));
+    transition: all 0.5s;
+}
+
+.orden_container--abierto {
+    transform: translateX(0);
+    transition: all 0.5s;
+}
+
+.orden_container button {
+    width: 100%;
+}
+
+#cerrar_filtros {
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    width: 32px;
+    height: 18px;
+    top: 20px;
+    right: 20px;
+    padding: 20px;
+    z-index: 99999;
+    cursor: pointer;
+}
+
+#cerrar_filtros .line {
+    width: 100%;
+    height: 2px;
+    background-color: var(--color-secondary);
+    border-radius: 4px;
+    transition: all 0.15s;
+}
+
+#cerrar_filtros .line:nth-child(1) {
+    transform: rotate(-45deg) translate(-11px, 0px);
+}
+
+#cerrar_filtros .line:nth-child(2) {
+    transform: rotate(45deg) translate(-11px, 0px);
+}
+
 /* ############################### */
 /* Inicio detalle producto */
 .detalle_producto {
@@ -480,12 +542,8 @@ video {
 }
 
 .main_login button {
-    background-color: var(--color-secondary);
-    border: none;
-    color : var(--color-primary);
     width: 100%;
     max-width: 500px;
-    padding: 1.5em 0em;
 }
 
 .main_login button:hover {

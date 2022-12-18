@@ -8,7 +8,18 @@ export function heroCategory(name) {
             <button class="filtro_layout">Ver 2</button>
             <button class="filtro_ordenar">Filtrar</button>
         </div>
+
+        <div class="orden_container">
+            <div id="cerrar_filtros">
+                <div class="line"></div>
+                <div class="line"></div>
+            </div>
+            <button id="filtrar_asc">Ascendente</button>
+            <button id="filtrar_desc">Descendente</button>
+        </div>
     `;
 
     return hero;
 }
+
+

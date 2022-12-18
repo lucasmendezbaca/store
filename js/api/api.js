@@ -27,3 +27,7 @@ export function getProductsCategory(category) {
 export function getUsers() {
     return fetch(`${DOMAIN}${USERS}`).then(res=>res.json());
 }
+
+export function sortProducts(order, category) {
+    return fetch(`${DOMAIN}${PRODUCTS_CATEGORY}/${category}?sort=${order}`).then(res=>res.json());
+}

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/css/style.css">
+    <title>Document</title>
+</head>
+<body>
+    <!-- Inicio Header -->
+    <header class="header container">
+        <img class="header__logo" src="img/logo.svg" alt="logo" onclick="ROUTER.load('home')">
+
+        <div class="header__user_menu">
+            <a class="user_menu--login" href="#" class="user_menu_link"><i><img src="img/user.svg" alt="icono de usuario"></i>INICIAR SESIÓN</a>
+            <a class="user_menu--cart" href="#" class="user_menu_link"><i><img src="img/cart.svg" alt="icono de carrito"></i></a>
+        </div>
+
+        <div class="header__secondary_menu"></div>
+    </header>
+    <!-- Fin Header -->
+
+    <main id="main"></main>
+    
+    <script src="./js/index.js" type="module"></script>
+
+    <!-- Inicio Footer -->
+    <footer class="footer container">
+        <section class="footer__ayuda">
+            <h3>Ayuda</h3>
+            <a href="">Preguntas frecuentes</a>
+            <a href="">Comprar online</a>
+            <a href="">Cambios y devoluciones</a>
+            <a href="">Codigos promocionales</a>
+            <a href="">Tiendas</a>
+            <a href="">Comntacto</a>
+        </section>
+
+        <section class="footer__nosotros">
+            <h3>Nosotros</h3>
+            <a href="">Inversores</a>
+            <a href="">Empleo</a>
+            <a href="">Área de prensa</a>
+        </section>
+
+        <section class="footer__legal">
+            <h3>Legal</h3>
+            <a href="">Condiciones de compra</a>
+            <a href="">Política de privacidad</a>
+            <a href="">Política de cookies</a>
+            <a href="">Aviso legal</a>    
+            <a href="">Accesibilidad</a>
+            <a href="">Politica SGSI</a>
+        </section>
+
+        <section class="footer__metodos_pago">
+            <h3>Métodos de pago</h3>
+            <a href=""><img src="img/visa.png" alt="visa"></a>
+            <a href=""><img src="img/american-express.png" alt="american-express"></a>
+            <a href=""><img src="img/paypal.png" alt="paypal"></a>
+
+            <div class="footer__redes_sociales">
+                <a href="https://github.com/lucasmendezbaca"><img src="img/github.svg" alt="icono de github"></a>
+                <a href="https://www.linkedin.com/in/lucas-m%C3%A9ndez-baca-48851123a/"><img src="img/linkedin-square.svg" alt="icono de linkedin"></a>
+            </div>
+        </section>
+    </footer>
+    <!-- Fin Footer -->
+</body>
+</html>

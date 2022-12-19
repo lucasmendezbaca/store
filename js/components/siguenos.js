@@ -2,7 +2,9 @@ export function siguenos () {
     const siguenos = document.createElement('section');
     siguenos.classList.add('siguenos');
     siguenos.innerHTML = `
-        <img class="siguenos__img" src="img/siguenos.webp" alt="imagen de modelos con ropa">
+        <div class="siguenos__img_container">
+            <img class="siguenos__img" src="img/siguenos.webp" alt="imagen de modelos con ropa">
+        </div>
         <div class="siguenos__info">
             <h3 class="siguenos__info__titulo">SÍGUENOS</h3>
             <p class="siguenos__info__parrafo">Te esperamos en nuestras redes sociales.<br>Aquí sucede todo. No te lo pierdas.</p>

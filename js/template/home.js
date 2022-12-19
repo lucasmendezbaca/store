@@ -15,11 +15,10 @@ export function home() {
             contenedorPrincipal.classList.add('main_home');
             contenedorPrincipal.innerHTML = '';
             contenedorPrincipal.appendChild(heroHome());
-            contenedorPrincipal.appendChild(principalSlider(res));
+            // contenedorPrincipal.appendChild(principalSlider(res));
             contenedorPrincipal.appendChild(baner());
             contenedorPrincipal.appendChild(siguenos());
             contenedorPrincipal.appendChild(novedades());
-            // console.log(contenedorPrincipal);
 
             resolve(contenedorPrincipal.outerHTML);
             hideLoader();

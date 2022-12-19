@@ -27,15 +27,16 @@ export function cart() {
                     </tr>
                 </thead>
                 <tbody>
-                    ${products.map(product => `
-                        <tr>
+                    ${products.map((product) => `
+                        <tr class="carrito__linea_producto">
                             <td class="carrito__celda_producto">
                                 <img src="${product.image}" alt="${product.title}" class="carrito__tabla__img">
                                 ${product.title}
+                                <span class="carrito__id">${product.id}</span>
                             </td>
                             <td>${product.price}</td>
-                            <td>${product.talle}</td>
-                            <td>${product.quantity}</td>
+                            <td class="carrito__talle">${product.talle}</td>
+                            <td class="carrito__cantidad">${product.quantity}</td>
                             <td>${product.price * product.quantity} €</td>
                             <td>
                                 <span class="carrito__quitar_producto">-</span>

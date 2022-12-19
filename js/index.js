@@ -2,6 +2,7 @@ import { home } from './template/home.js';
 import { category } from './template/category.js';
 import { productDetail } from './template/product_detail.js';
 import { account } from './template/acount.js';
+import { cart } from './template/cart.js';
 import { getCategories } from './api/api.js';
 import { getProduct } from './api/api.js';
 import { getUsers } from './api/api.js';
@@ -10,11 +11,15 @@ import { isRegister } from './api/helpers.js';
 import { showLoader } from './api/helpers.js';
 import { hideLoader } from './api/helpers.js';
 import { productCategory } from './components/product_category.js';
+import { ProductCart } from './classes/ProductCart.js';
 
 
 const main = document.querySelector('#main');
 const logoHeader = document.querySelector('.header__logo');
 const menuAccount = document.querySelector('.user_menu--login');
+const cartMenu = document.querySelector('.user_menu--cart');
+const elementsDeleteOneProduct = document.querySelector('.carrito__quitar_producto');
+const elementsAddOneProduct = document.querySelector('.carrito__agregar_producto');
 
 const secondaryMenu = document.querySelector('.header__secondary_menu');
 getCategories().then(categories => {
@@ -33,6 +38,37 @@ getCategories().then(categories => {
     });
 });
 
+cartMenu.addEventListener('click', () => {
+    main.innerHTML = cart();
+    vaciarCarrito();
+    deleteOneProduct();
+});
+
+function vaciarCarrito() {
+    const cartElement = document.querySelector('.carrito');
+    const vaciarCarrito = document.querySelector('.carrito__vaciar_carrito');
+
+    vaciarCarrito.addEventListener('click', () => {
+        ProductCart.deleteAllProducts();
+        cartElement.innerHTML = `
+            <h1 class="carrito__titulo">Carrito</h1>
+            <p class="carrito__vacio">El carrito está vacío</p>
+        `;
+    });
+}
+
+function deleteOneProduct() {
+    elementsDeleteOneProduct.forEach(element => {
+        element.addEventListener('click', () => {
+            const id = element.querySelector('.carrito__id').textContent;
+            const talle = element.querySelector('.carrito__talle').textContent;
+            const product = new ProductCart(id, '', '', '', '', talle);
+            product.deleteOneProduct();
+            element.remove();
+        });
+    });
+}
+
 function addEventProductsCategory(categoryName) {
     const products = document.querySelectorAll('.producto_categoria');
 
@@ -42,12 +78,43 @@ function addEventProductsCategory(categoryName) {
             showLoader();
             getProduct(id).then(res => {
                 main.innerHTML = productDetail(res);
+                showActiveTalle();
+                buyProductFuncionality();
                 hideLoader();
             });
         });
     });
 
     showOrderMenu(categoryName);
+}
+
+function buyProductFuncionality() {
+    const addCarrito = document.querySelector('.boton--add_carrito');
+    addCarrito.addEventListener('click', () => {
+        const id = document.querySelector('#id').value;
+        const nombre = document.querySelector('.detalle_producto__nombre').textContent;
+        const imagen = document.querySelector('.detalle_producto__img img').src;
+        const precio = document.querySelector('.detalle_producto__precio span').textContent;
+        const cantidad = document.querySelector('#cantidad').value;
+        const talla = localStorage.getItem('talla');
+
+        let product = new ProductCart(id, nombre, imagen ,precio, parseInt(cantidad), talla);
+        product.addProduct();
+    });
+}
+
+
+function showActiveTalle() {
+    const tallas = document.querySelectorAll('.detalle_producto__talla');
+    tallas.forEach(talla => {
+        talla.addEventListener('click', () => {
+            tallas.forEach(talla => {
+                talla.classList.remove('detalle_producto__talla--activo');
+            });
+            talla.classList.add('detalle_producto__talla--activo');
+            localStorage.setItem('talla', talla.textContent);
+        });
+    });
 }
 
 function showOrderMenu(categoryName) {

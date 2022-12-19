@@ -8,9 +8,18 @@ export function productDetail(product) {
         <div class="detalle_producto__descripcion">
             <h1 class="detalle_producto__nombre">${product.title}</h1>
             <p class="detalle_producto__descr">${product.description}</p>
-            <p class="detalle_producto__precio">Precio: <span>${product.price} €</span></p>
+            <div class="detalle_producto__tallas">
+                <p>Tallas:</p>
+                <p class="detalle_producto__talla">XL</p>
+                <p class="detalle_producto__talla">L</p>
+                <p class="detalle_producto__talla">M</p>
+                <p class="detalle_producto__talla">S</p>
+                <p class="detalle_producto__talla">XS</p>
+            </div>
+            <p class="detalle_producto__precio">Precio: <span>${product.price}</span> €</p>
             <p class="detalle_producto__categoria">Categoria: <span>${product.category}</span></p>
-            <p><input type="number" name="cantidad" id="cantidad" value="1"></p>
+            <p>Cantidad: <input type="number" name="cantidad" id="cantidad" value="1"></p>
+            <input type="hidden" name="id" id="id" value="${product.id}">
             <button class="boton boton--add_carrito">AÑADIR AL CARRITO</button>
         </div>
     `;

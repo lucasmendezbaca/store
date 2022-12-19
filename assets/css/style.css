@@ -24,6 +24,15 @@ button {
     padding: 1.5em 1em;
 }
 
+.button--fino {
+    padding: 1em 1em;
+}
+
+button:hover {
+    background-color: var(--color-secondary-hover);
+    transition: all 0.3s;
+}
+
 .container {
     padding: 0px 50px;
 }
@@ -479,7 +488,7 @@ video {
     justify-content: center;
     align-items: center;
     box-sizing: border-box;
-    padding: 0em 6em;
+    padding: 0 5%;
     max-height: 500px;
 }
 
@@ -492,6 +501,22 @@ video {
     flex-basis: 50%;
     box-sizing: border-box;
     padding-right: 6em;
+}
+
+.detalle_producto__talla {
+    display: inline-block;
+    cursor: pointer;
+    width: fit-content;
+    min-width: 1.4em;
+    padding: 0.5em;
+    text-align: center;
+}
+
+.detalle_producto__talla:hover,
+.detalle_producto__talla--activo {
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    transition: all 0.3s;
 }
 
 /* ######################### */
@@ -546,7 +571,33 @@ video {
     max-width: 500px;
 }
 
-.main_login button:hover {
-    background-color: var(--color-secondary-hover);
-    transition: all 0.3s;
+/* ################################ */
+/* Inicio Carrito */
+.carrito__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 30px;
 }
+
+.carrito__tabla {
+    margin: 0 auto;
+}
+
+.carrito__tabla__img {
+    max-width: 50px;
+    max-height: 50px;
+}
+
+.carrito__celda_producto {
+    display: flex;
+    align-items: center;
+    gap: 1em;
+    min-height: 50px;
+}
+
+.carrito__tabla td {
+    padding: 5px 10px;
+    text-align: center;
+}
+/* Fin Carrito */

@@ -40,9 +40,6 @@ getCategories().then(categories => {
 
 cartMenu.addEventListener('click', () => {
     showCart();
-    // main.innerHTML = cart();
-    // vaciarCarrito();
-    // deleteOneProduct();
 });
 
 function deleteOneProduct() {
@@ -173,13 +170,14 @@ function showOrderMenu(categoryName) {
 }
 
 function orderProductsFuncionality(categoryName) {
+    console.log(categoryName);
     const ordenContainer = document.querySelector('.orden_container');
     const ascendente = document.querySelector('#filtrar_asc');
     const descendente = document.querySelector('#filtrar_desc');
     const productsContainer = document.querySelector('.grid_productos');
 
     ascendente.addEventListener('click', () => {
-        console.log(categoryName);
+        // console.log(categoryName);
         sortProducts('asc', categoryName).then(res => {
             productsContainer.innerHTML = '';
             showLoader();
@@ -193,7 +191,7 @@ function orderProductsFuncionality(categoryName) {
     });
 
     descendente.addEventListener('click', () => {
-        console.log(categoryName);
+        // console.log(categoryName);
         sortProducts('desc', categoryName).then(res => {
             productsContainer.innerHTML = '';
             showLoader();
@@ -237,7 +235,33 @@ menuAccount.addEventListener('click', () => {
             }
         });
     });
+
+    sendEmailRegister();
 });
+
+function sendEmailRegister() {
+    const btn = document.getElementById('button');
+
+    document.getElementById('form')
+    .addEventListener('submit', function(event) {
+    event.preventDefault();
+
+    btn.value = 'Sending...';
+
+    const serviceID = 'default_service';
+    const templateID = 'template_rjuwh4k';
+
+    emailjs.sendForm(serviceID, templateID, this)
+        .then(() => {
+        btn.value = 'Ya estas registrado!';
+        btn.disabled = true;
+        // alert('Sent!');
+        }, (err) => {
+        btn.value = 'Send Email';
+        // alert(JSON.stringify(err));
+        });
+    });
+}
 
 showHome();
 updateCartCounter();

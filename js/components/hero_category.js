@@ -5,8 +5,8 @@ export function heroCategory(name) {
     hero.innerHTML = `
         <h1 class="titulo_pagina">${name}</h1>
         <div class="categoria_filtros">
-            <button class="filtro_layout">Ver 2</button>
-            <button class="filtro_ordenar">Filtrar</button>
+            <button class="filtro_layout button--fino">Ver 2</button>
+            <button class="filtro_ordenar button--fino">Filtrar</button>
         </div>
 
         <div class="orden_container">

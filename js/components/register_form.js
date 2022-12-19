@@ -4,7 +4,7 @@ export function registerForm() {
     form.innerHTML = `
         <h2>REGISTRARSE</h2>
 
-        <div class="form">
+        <form id="form" class="form">
             <div class="form__input_div">
                 <label for="name_register">Nombre</label>
                 <input type="text" name="name_register" id="name_register">
@@ -29,8 +29,8 @@ export function registerForm() {
                 <label for="password_register_comfirm">Confirma la contraseña</label>
                 <input type="password" name="password_register_comfirm" id="password_register_comfirm">
             </div>
-            <button>REGISTRARSE</button>
-        </div>
+            <input type="submit" value="Enviar" id="button">
+        </form>
     `;
 
     return form;

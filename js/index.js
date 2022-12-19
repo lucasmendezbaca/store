@@ -18,7 +18,6 @@ const main = document.querySelector('#main');
 const logoHeader = document.querySelector('.header__logo');
 const menuAccount = document.querySelector('.user_menu--login');
 const cartMenu = document.querySelector('.user_menu--cart');
-const elementsAddOneProduct = document.querySelector('.carrito__agregar_producto');
 const cartCounter = document.querySelector('#carrito_contador');
 
 

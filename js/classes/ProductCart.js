@@ -11,57 +11,37 @@ class ProductCart {
     }
 
     addProduct() {
-        let productExist = false;
-        let productIndex = 0;
-        ProductCart.carrito.forEach((product, index) => {
-            if (product.id === this.id) {
-                productExist = true;
-                productIndex = index;
-            }
-        });
-        if (productExist) {
-            if (ProductCart.carrito[productIndex].talle == this.talle) {
-                 ProductCart.carrito[productIndex].quantity += parseInt(this.quantity);
-            } else {
-                ProductCart.carrito.push(this);
-            }
-        } else {
+        let productInCart = ProductCart.carrito.find(product => product.id === this.id && product.talle === this.talle);
+        if (productInCart) {
+            productInCart.quantity += parseInt(this.quantity);
+        }
+        else {
             ProductCart.carrito.push(this);
         }
         localStorage.setItem('carrito', JSON.stringify(ProductCart.carrito));
     }
 
     static addOneProduct(id, talla) {
-        let productsSameId = ProductCart.carrito.filter(product => product.id === id);
-        productsSameId.forEach((product, index) => {
-            if (product.talle === talla) {
-                ProductCart.carrito[index].quantity += 1;
-            }
-        });
+        let product = ProductCart.carrito.find(product => product.id === id && product.talle === talla);
+        product.quantity += 1;
+
         localStorage.setItem('carrito', JSON.stringify(ProductCart.carrito));
     }
 
     static deleteOneProduct(id, talla) {
-        let productsSameId = ProductCart.carrito.filter(product => product.id === id);
-        productsSameId.forEach((product, index) => {
-            if (product.talle === talla) {
-                ProductCart.carrito[index].quantity -= 1;
-                if (ProductCart.carrito[index].quantity === 0) {
-                    ProductCart.carrito.splice(index, 1);
-                }
-            }
-        });
+        let product = ProductCart.carrito.find(product => product.id === id && product.talle === talla);
+        product.quantity -= 1;
+
+        if (product.quantity === 0) {
+            ProductCart.carrito = ProductCart.carrito.filter(product => product.id !== id || product.talle !== talla);
+        }
+
         localStorage.setItem('carrito', JSON.stringify(ProductCart.carrito));
     }
 
 
     static getQuantityProducts() {
-        let quantity = 0;
-        ProductCart.carrito.forEach(product => {
-            quantity += product.quantity;
-        });
-
-        return quantity;
+        return ProductCart.carrito.reduce((acc, product) => acc + product.quantity, 0);
     }
 
     static deleteAllProducts() {

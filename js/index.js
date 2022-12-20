@@ -22,6 +22,8 @@ const cartCounter = document.querySelector('#carrito_contador');
 
 
 const secondaryMenu = document.querySelector('.header__secondary_menu');
+const lines = document.querySelectorAll('.line');
+const hamburguesa = document.querySelector('#menu__hamburguesa');
 getCategories().then(categories => {
     categories.forEach(categoryName => {
         const link = document.createElement('a');
@@ -29,11 +31,18 @@ getCategories().then(categories => {
         link.textContent = categoryName;
         link.href = '#';
         link.addEventListener('click', () => {
+            secondaryMenu.classList.remove('mostrar');
+            hamburguesa.classList.remove('trans');
+            lines.forEach(line => {
+                line.classList.remove('line--color');
+            });
             category(categoryName).then(res => {
                 main.innerHTML = res;
                 addEventProductsCategory(categoryName);
             });
         });
+
+        menuHamburguesa();
         secondaryMenu.appendChild(link);
     });
 });
@@ -261,6 +270,20 @@ function sendEmailRegister() {
         // alert(JSON.stringify(err));
         });
     });
+}
+
+function menuHamburguesa() {
+    const menuLinks = document.querySelector('.header__secondary_menu');
+    const body = document.querySelector('body');
+
+    hamburguesa.onclick = function() {
+        this.classList.toggle('trans');
+        menuLinks.classList.toggle('mostrar');
+        body.classList.toggle('no_scroll');
+        lines.forEach(line => {
+            line.classList.toggle('line--color');
+        });
+    };
 }
 
 showHome();

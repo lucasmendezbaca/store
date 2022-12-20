@@ -8,7 +8,7 @@ export function showLoader() {
     const body = document.querySelector('body');
 
     loader.style.display = 'flex';
-    body.style.overflow = 'hidden';
+    body.classList.add('no_scroll');
 }
 
 export function hideLoader() {
@@ -16,5 +16,5 @@ export function hideLoader() {
     const body = document.querySelector('body');
 
     loader.style.display = 'none';
-    body.style.overflow = 'auto';
+    body.classList.remove('no_scroll');
 }

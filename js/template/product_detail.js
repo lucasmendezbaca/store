@@ -20,7 +20,7 @@ export function productDetail(product) {
             <p class="detalle_producto__categoria">Categoria: <span>${product.category}</span></p>
             <p>Cantidad: <input type="number" name="cantidad" id="cantidad" value="1"></p>
             <input type="hidden" name="id" id="id" value="${product.id}">
-            <button class="boton boton--add_carrito">AÑADIR AL CARRITO</button>
+            <button class="boton boton--add_carrito">AÑADIR AL CARRITO<img class="animacion_carrito" src="assets/img/cart.svg"></button>
         </div>
     `;
     return productElement.outerHTML;

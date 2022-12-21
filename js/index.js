@@ -130,6 +130,7 @@ function addEventProductsCategory(categoryName) {
 
 function buyProductFuncionality() {
     const addCarrito = document.querySelector('.boton--add_carrito');
+    const animacionCarrito = document.querySelector('.animacion_carrito');
     addCarrito.addEventListener('click', () => {
         const id = document.querySelector('#id').value;
         const nombre = document.querySelector('.detalle_producto__nombre').textContent;
@@ -142,6 +143,11 @@ function buyProductFuncionality() {
         product.addProduct();
 
         updateCartCounter();
+
+        animacionCarrito.classList.add('animacion_carrito--activo');
+        setTimeout(() => {
+            animacionCarrito.classList.remove('animacion_carrito--activo');
+        }, 1000);
     });
 }
 
@@ -223,7 +229,6 @@ function showHome() {
         main.innerHTML = res;
     });
 }
-
 
 logoHeader.addEventListener('click', () => {
     showHome();

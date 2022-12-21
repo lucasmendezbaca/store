@@ -6,6 +6,7 @@ import { novedades } from "../components/novedades.js";
 import { getProductsLimit } from "../api/api.js";
 import { showLoader } from "../api/helpers.js";
 import { hideLoader } from "../api/helpers.js";
+import { slider } from "../components/slider.js";
 
 export function home() {
     return new Promise((resolve, reject) => {
@@ -15,6 +16,7 @@ export function home() {
             contenedorPrincipal.classList.add('main_home');
             contenedorPrincipal.innerHTML = '';
             contenedorPrincipal.appendChild(heroHome());
+            // contenedorPrincipal.appendChild(slider(res));
             // contenedorPrincipal.appendChild(principalSlider(res));
             contenedorPrincipal.appendChild(baner());
             contenedorPrincipal.appendChild(siguenos());

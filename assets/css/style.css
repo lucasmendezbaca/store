@@ -663,8 +663,20 @@ video {
     cursor: pointer;
 }
 
+i.carrito__opciones {
+    padding: 2px;
+    background-color: var(--color-secondary);
+    border-radius: 50%;
+    color: white;
+}
+
+i.carrito__opciones:hover {
+    background-color: var(--color-secondary-hover);
+}
+
 .carrito__quitar_producto {
-    margin: 0 1em;
+    margin-left: 1em;
+    margin-right: 0.5em;
 }
 
 .boton--add_carrito {

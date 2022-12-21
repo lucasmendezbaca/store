@@ -227,6 +227,7 @@ a {
     grid-column: 1 / 5;
     grid-row: 1 / 2;
     margin-top: 2vh;
+    text-align: center;
 }
 
 .hero img {

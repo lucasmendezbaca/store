@@ -28,6 +28,7 @@ getCategories().then(categories => {
     categories.forEach(categoryName => {
         const link = document.createElement('a');
         link.classList.add('header__secondary_menu__link');
+        link.classList.add('elemento_header');
         link.textContent = categoryName;
         link.href = '#';
         link.addEventListener('click', () => {
@@ -52,7 +53,7 @@ cartMenu.addEventListener('click', () => {
 });
 
 function deleteOneProduct() {
-    const elementsLineaProducto = document.querySelectorAll('.carrito__linea_producto');
+    const elementsLineaProducto = document.querySelectorAll('.carrito__info');
     elementsLineaProducto.forEach(element => {
         const elementDeleteOneProduct = element.querySelector('.carrito__quitar_producto');
         elementDeleteOneProduct.addEventListener('click', () => {
@@ -72,7 +73,7 @@ function deleteOneProduct() {
 }
 
 function addOneProduct() {
-    const elementsLineaProducto = document.querySelectorAll('.carrito__linea_producto');
+    const elementsLineaProducto = document.querySelectorAll('.carrito__info');
     elementsLineaProducto.forEach(element => {
         const elementAddOneProduct = element.querySelector('.carrito__agregar_producto');
         elementAddOneProduct.addEventListener('click', () => {
